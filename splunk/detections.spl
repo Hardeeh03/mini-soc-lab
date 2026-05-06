@@ -1,0 +1,47 @@
+# Mini SOC Lab - Splunk Detection Searches
+# Base filter: index=main sourcetype=mini_soc:json
+
+#############################
+# 1) Brute-force then success
+#############################
+index=main sourcetype=mini_soc:json event_type=auth action=login
+| bin _time span=5m
+| stats count(eval(status="failure")) as failures values(status) as statuses values(country) as countries by _time user src_ip dest_host
+| where failures >= 10
+| eval brute_force_suspected=if(mvfind(statuses,"success")>=0, "yes", "no")
+| sort - failures
+
+##################################
+# 2) Port scan against single host
+##################################
+index=main sourcetype=mini_soc:json event_type=network action=connection_attempt
+| bin _time span=2m
+| stats dc(dest_port) as unique_ports values(dest_port) as ports by _time src_ip dest_host country
+| where unique_ports >= 10
+| sort - unique_ports
+
+######################################
+# 3) Suspicious encoded PowerShell use
+######################################
+index=main sourcetype=mini_soc:json event_type=endpoint action=process_start
+| search details="*EncodedCommand*"
+| table _time user src_ip dest_host details severity
+| sort - _time
+
+#########################
+# 4) Impossible travel
+#########################
+index=main sourcetype=mini_soc:json event_type=auth action=login status=success
+| sort 0 user _time
+| streamstats current=f window=1 last(_time) as prev_time last(country) as prev_country by user
+| eval minutes_since_prev=round((_time-prev_time)/60,2)
+| where isnotnull(prev_country) AND country!=prev_country AND minutes_since_prev<=60
+| table _time user src_ip country prev_country minutes_since_prev dest_host
+| sort - _time
+
+########################################
+# 5) High-severity attack activity board
+########################################
+index=main sourcetype=mini_soc:json severity IN ("high","critical")
+| stats count by event_type action severity
+| sort - count
