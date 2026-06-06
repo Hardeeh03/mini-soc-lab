@@ -80,5 +80,5 @@ Add these files to `screenshots/` and they will render in this README:
 3. Run detections from `splunk/detections.spl`.
 4. Save detections as scheduled alerts and validate triggers.
 
-## Resume-Ready Summary
+## Summary
 Built a Mini SOC Lab in Splunk by generating synthetic attack telemetry, ingesting and parsing SIEM logs, engineering SPL detections, creating scheduled alerts, and producing analyst-grade incident documentation.
