@@ -1,0 +1,15 @@
+{
+  "alert_name": "Port Scan Detected",
+  "timestamp": "2026-05-05T11:53:57+00:00",
+  "event_type": "network",
+  "user": "-",
+  "src_ip": "203.0.113.70",
+  "dest_host": "web-01",
+  "action": "connection_attempt",
+  "status": "failure",
+  "dest_port": 3389,
+  "protocol": "tcp",
+  "country": "NG",
+  "severity": "high",
+  "details": "Sequential multi-port probing behavior"
+}

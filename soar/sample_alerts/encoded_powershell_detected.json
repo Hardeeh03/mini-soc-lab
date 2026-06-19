@@ -1,0 +1,15 @@
+{
+  "alert_name": "Encoded PowerShell Detected",
+  "timestamp": "2026-05-05T18:43:59+00:00",
+  "event_type": "endpoint",
+  "user": "charlie",
+  "src_ip": "10.0.1.12",
+  "dest_host": "helpdesk-01",
+  "action": "process_start",
+  "status": "success",
+  "dest_port": null,
+  "protocol": null,
+  "country": "GB",
+  "severity": "high",
+  "details": "powershell.exe -EncodedCommand SQBmACg..."
+}

@@ -1,0 +1,40 @@
+{
+  "ticket_id": "SOAR-20260619113331-encoded-powershell-detected",
+  "created_at": "2026-06-19T11:33:31+00:00",
+  "status": "open",
+  "priority": "high",
+  "alert": {
+    "alert_name": "Encoded PowerShell Detected",
+    "timestamp": "2026-05-05T18:43:59+00:00",
+    "event_type": "endpoint",
+    "user": "charlie",
+    "src_ip": "10.0.1.12",
+    "dest_host": "helpdesk-01",
+    "action": "process_start",
+    "status": "success",
+    "dest_port": null,
+    "protocol": null,
+    "country": "GB",
+    "severity": "high",
+    "details": "powershell.exe -EncodedCommand SQBmACg..."
+  },
+  "ip_reputation": {
+    "provider": "mock_virustotal",
+    "lookup_ready": false,
+    "src_ip": "10.0.1.12",
+    "verdict": "clean",
+    "score": 5,
+    "category": "none",
+    "reason": "No mock threat-intel hit",
+    "vt_api_key_env": "VT_API_KEY"
+  },
+  "decision_reasons": [
+    "high-risk Splunk alert and event severity",
+    "details contain high-signal execution or compromise text"
+  ],
+  "recommended_actions": [
+    "Isolate or investigate endpoint helpdesk-01",
+    "Review process history for user charlie",
+    "Collect command line, parent process, and script block logs"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "alert_name": "Impossible Travel Login",
+  "timestamp": "2026-05-06T04:34:59+00:00",
+  "event_type": "auth",
+  "user": "alice",
+  "src_ip": "198.51.100.23",
+  "dest_host": "vpn-01",
+  "action": "login",
+  "status": "success",
+  "dest_port": 443,
+  "protocol": "tcp",
+  "country": "BR",
+  "severity": "high",
+  "details": "Successful login from distant geography shortly after prior login"
+}

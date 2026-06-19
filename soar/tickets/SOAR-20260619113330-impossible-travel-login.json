@@ -1,0 +1,39 @@
+{
+  "ticket_id": "SOAR-20260619113330-impossible-travel-login",
+  "created_at": "2026-06-19T11:33:30+00:00",
+  "status": "open",
+  "priority": "high",
+  "alert": {
+    "alert_name": "Impossible Travel Login",
+    "timestamp": "2026-05-06T04:34:59+00:00",
+    "event_type": "auth",
+    "user": "alice",
+    "src_ip": "198.51.100.23",
+    "dest_host": "vpn-01",
+    "action": "login",
+    "status": "success",
+    "dest_port": 443,
+    "protocol": "tcp",
+    "country": "BR",
+    "severity": "high",
+    "details": "Successful login from distant geography shortly after prior login"
+  },
+  "ip_reputation": {
+    "provider": "mock_virustotal",
+    "lookup_ready": false,
+    "src_ip": "198.51.100.23",
+    "verdict": "clean",
+    "score": 5,
+    "category": "none",
+    "reason": "No mock threat-intel hit",
+    "vt_api_key_env": "VT_API_KEY"
+  },
+  "decision_reasons": [
+    "high-risk Splunk alert and event severity"
+  ],
+  "recommended_actions": [
+    "Verify user alice activity",
+    "Force MFA challenge or password reset if unconfirmed",
+    "Review recent sessions and VPN access history"
+  ]
+}

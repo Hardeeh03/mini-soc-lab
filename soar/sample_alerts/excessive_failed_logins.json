@@ -1,0 +1,15 @@
+{
+  "alert_name": "Excessive Failed Logins",
+  "timestamp": "2026-05-05T03:26:53+00:00",
+  "event_type": "auth",
+  "user": "bob",
+  "src_ip": "185.244.25.10",
+  "dest_host": "vpn-01",
+  "action": "login",
+  "status": "failure",
+  "dest_port": 443,
+  "protocol": "tcp",
+  "country": "RU",
+  "severity": "high",
+  "details": "Repeated VPN login failure pattern"
+}

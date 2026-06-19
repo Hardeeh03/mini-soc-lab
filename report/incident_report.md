@@ -77,3 +77,13 @@ The detections show how correlated log patterns can identify likely account comp
 
 ## Conclusion
 The mini SOC pipeline successfully demonstrates end-to-end detection engineering: event simulation, log ingestion, rule creation, alerting, and analyst-focused reporting.
+
+## Automated Triage Outcome
+
+Brute-force activity from `185.244.25.10` is escalated by the SOAR simulation because the source IP matches the known malicious brute-force indicator from this report. The pipeline creates a high-priority ticket, recommends account reset or lockout for `bob`, and prints a mock Slack notification for analyst handoff.
+
+Port scanning from `203.0.113.70` is escalated because the source IP matches the known malicious reconnaissance indicator. The generated ticket recommends blocking or monitoring the source IP, reviewing exposed services on `web-01`, and checking for follow-on exploit attempts.
+
+Encoded PowerShell execution by `charlie` on `helpdesk-01` is escalated even though the source IP is clean in mock reputation. The alert details include `EncodedCommand`, so the pipeline treats it as high signal and recommends endpoint investigation, process history review, and command-line evidence collection.
+
+Impossible travel activity for `alice` is escalated because the alert severity is high and the login pattern requires identity validation. The pipeline recommends user verification, MFA challenge or password reset if the activity is unconfirmed, and review of recent sessions and VPN access history.

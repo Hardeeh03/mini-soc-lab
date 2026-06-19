@@ -7,6 +7,7 @@ This lab shows practical SOC analyst workflow skills that map directly to entry-
 - Log ingestion and normalization in SIEM
 - Detection logic design using SPL
 - Alert tuning and scheduling
+- Automated triage workflow design using SOAR-style decision logic
 - Incident triage and communication
 
 ## Environment
@@ -43,10 +44,21 @@ Full analyst report is included in [report/incident_report.md](./report/incident
 - What it means
 - Recommended SOC response actions
 
+## Automated Triage (SOAR Simulation)
+The lab now includes a SOAR-style triage pipeline in [soar/](./soar/) that processes Splunk alert payloads after detection. It enriches the source IP with mock VirusTotal-style reputation, decides whether to escalate or auto-close, writes escalated ticket JSON files, and prints a mock Slack notification for analyst handoff.
+
+This simulates a real workflow such as:
+
+```text
+Splunk alert -> SOAR webhook -> IP reputation -> condition -> ticket/Slack
+```
+
 ## Repository Structure
 - `data/security_events.jsonl` - Simulated attack and background events
 - `scripts/generate_fake_attacks.py` - Attack event generator
 - `scripts/run_lab.ps1` - Quick run helper
+- `soar/triage_pipeline.py` - SOAR-style alert enrichment and triage script
+- `soar/README.md` - SOAR workflow mapping and run guide
 - `splunk/detections.spl` - Detection searches
 - `splunk/alerts_setup.md` - Alert setup guide
 - `splunk/inputs.conf` - File monitor input example
