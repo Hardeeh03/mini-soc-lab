@@ -66,7 +66,6 @@ Splunk alert -> SOAR webhook -> IP reputation -> condition -> ticket/Slack
 - `screenshots/` - Evidence images from Splunk
 
 ## Evidence (Screenshots)
-Add these files to `screenshots/` and they will render in this README:
 - `01-ingestion-count.png`
 - `02-failed-logins-detection.png`
 - `03-port-scan-detection.png`
