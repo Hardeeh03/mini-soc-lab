@@ -86,4 +86,4 @@ Port scanning from `203.0.113.70` is escalated because the source IP matches the
 
 Encoded PowerShell execution by `charlie` on `helpdesk-01` is escalated even though the source IP is clean in mock reputation. The alert details include `EncodedCommand`, so the pipeline treats it as high signal and recommends endpoint investigation, process history review, and command-line evidence collection.
 
-Impossible travel activity for `alice` is escalated because the alert severity is high and the login pattern requires identity validation. The pipeline recommends user verification, MFA challenge or password reset if the activity is unconfirmed, and review of recent sessions and VPN access history.
+Impossible travel activity for `alice` auto-closes in this SOAR simulation because the source IP has clean mock reputation and the alert details do not contain a high-signal keyword. The event remains documented as an authentication anomaly, but this sample demonstrates the auto-close branch for medium-severity alerts without malicious enrichment.

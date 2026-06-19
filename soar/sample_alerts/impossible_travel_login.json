@@ -10,6 +10,6 @@
   "dest_port": 443,
   "protocol": "tcp",
   "country": "BR",
-  "severity": "high",
+  "severity": "medium",
   "details": "Successful login from distant geography shortly after prior login"
 }

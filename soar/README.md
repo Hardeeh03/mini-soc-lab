@@ -61,11 +61,11 @@ Output locations:
 | Excessive Failed Logins | `185.244.25.10` | malicious | escalate | Ticket JSON + mock Slack message |
 | Port Scan Detected | `203.0.113.70` | malicious | escalate | Ticket JSON + mock Slack message |
 | Encoded PowerShell Detected | `10.0.1.12` | clean | escalate | Ticket JSON + mock Slack message |
-| Impossible Travel Login | `198.51.100.23` | clean | escalate | Ticket JSON + mock Slack message |
+| Impossible Travel Login | `198.51.100.23` | clean | auto_close | `soar/auto_closed_log.csv` entry |
 
 ## Decision Notes
 
 - Known bad IPs from `report/incident_report.md` are escalated automatically.
 - Encoded PowerShell escalates even with a clean IP because the command details are high signal.
-- Impossible travel escalates because the alert severity is high and requires account validation.
-- Clean, low-severity alerts are auto-closed to `soar/auto_closed_log.csv`.
+- Impossible travel auto-closes in this sample because the source IP is clean and no high-signal keyword is present.
+- Clean, medium/low-severity alerts without high-signal indicators are auto-closed to `soar/auto_closed_log.csv`.
