@@ -1,6 +1,6 @@
 {
-  "ticket_id": "SOAR-20260619113331-port-scan-detected",
-  "created_at": "2026-06-19T11:33:31+00:00",
+  "ticket_id": "SOAR-20260619115246-port-scan-detected",
+  "created_at": "2026-06-19T11:52:46+00:00",
   "status": "open",
   "priority": "high",
   "alert": {

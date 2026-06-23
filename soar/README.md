@@ -36,7 +36,7 @@ Webhook -> VirusTotal node -> Condition -> Ticket/Slack
 - Condition: checks malicious reputation, severity, and alert type.
 - Ticket/Slack: creates an incident ticket and sends a team notification.
 
-The Python script already checks for `VT_API_KEY` in the environment so a real VirusTotal lookup can be added later without changing the alert payload format.
+The Python script already checks for `VT_API_KEY` in the environment so a real VirusTotal lookup can be added later without changing the alert payload format. `enrich_ip` itself is fully mocked today — `lookup_ready` only reports whether the env var is set, it does not gate or change the reputation lookup, which always comes from the static `KNOWN_BAD_IPS` table.
 
 ## Run Commands
 
@@ -53,6 +53,13 @@ Output locations:
 
 - Escalated tickets: `soar/tickets/`
 - Auto-closed history: `soar/auto_closed_log.csv`
+
+## Tests
+
+```powershell
+python -m pip install pytest
+python -m pytest soar/test_triage_pipeline.py -q
+```
 
 ## Expected Results
 

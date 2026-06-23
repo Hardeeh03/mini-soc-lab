@@ -1,0 +1,2 @@
+closed_at,alert_name,src_ip,dest_host,user,reputation,reason
+2026-06-19T12:00:57+00:00,Impossible Travel Login,198.51.100.23,vpn-01,alice,clean,clean IP reputation and no high-risk escalation conditions

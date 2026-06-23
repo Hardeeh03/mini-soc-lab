@@ -25,12 +25,6 @@ KNOWN_BAD_IPS = {
         "reason": "Known Mini SOC port-scan source from incident report",
     },
 }
-ESCALATE_ALERTS = {
-    "Excessive Failed Logins",
-    "Port Scan Detected",
-    "Encoded PowerShell Detected",
-    "Impossible Travel Login",
-}
 HIGH_SIGNAL_DETAILS = ("EncodedCommand", "Potential account compromise")
 BASE_DIR = Path(__file__).resolve().parent
 TICKETS_DIR = BASE_DIR / "tickets"
@@ -77,8 +71,8 @@ def decide_severity(alert: dict, reputation: dict) -> dict:
     reasons = []
     if reputation["verdict"] == "malicious":
         reasons.append("source IP matched mock malicious reputation")
-    if alert_name in ESCALATE_ALERTS and severity in {"high", "critical"}:
-        reasons.append("high-risk Splunk alert and event severity")
+    if severity in {"high", "critical"}:
+        reasons.append(f"event severity is {severity}")
     if any(signal in details for signal in HIGH_SIGNAL_DETAILS):
         reasons.append("details contain high-signal execution or compromise text")
 
